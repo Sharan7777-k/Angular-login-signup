@@ -9,9 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class StaffManagementComponent implements OnInit {
   stafform!: FormGroup;
   staffList: any[] = [];
-  editingIndex:number | null = null;
-  ageError:string = '';
-
+  editingIndex: number | null = null;
+  ageError: string = '';
 
   constructor(private fb: FormBuilder) {}
 
@@ -22,8 +21,6 @@ export class StaffManagementComponent implements OnInit {
       address: ['', [Validators.required]],
       date: ['', [Validators.required]],
     });
-
-    this.loadStaffData();
   }
 
   onSubmit() {
@@ -31,8 +28,8 @@ export class StaffManagementComponent implements OnInit {
       return;
     }
     const age = this.calculateAge(this.stafform.value.date);
-    if(age<18){
-      this.ageError = "Age must be above 18"
+    if (age < 18) {
+      this.ageError = 'Age must be above 18';
       return;
     }
     const newStaff = {
@@ -40,19 +37,18 @@ export class StaffManagementComponent implements OnInit {
       email: this.stafform.value.email,
       address: this.stafform.value.address,
       date: this.stafform.value.date,
-      age: age
+      age: age,
     };
-    if(this.editingIndex !== null){
-      this.staffList[this.editingIndex]= newStaff;
-      this.editingIndex=null;
-       this.stafform.reset();
-    }else{
-
-       this.staffList.push(newStaff);
+    if (this.editingIndex !== null) {
+      this.staffList[this.editingIndex] = newStaff;
+      this.editingIndex = null;
+      this.stafform.reset();
+    } else {
+      this.staffList.push(newStaff);
     }
-     localStorage.setItem('staffList', JSON.stringify(this.staffList));
-     this.stafform.reset();
-     this.ageError = '';
+    localStorage.setItem('staffList', JSON.stringify(this.staffList));
+    this.stafform.reset();
+    this.ageError = '';
   }
 
   loadStaffData() {
@@ -93,7 +89,7 @@ export class StaffManagementComponent implements OnInit {
     this.editingIndex = index;
   }
 
-  onCancelEdit(){
+  onCancelEdit() {
     this.editingIndex = null;
     this.stafform.reset();
   }
