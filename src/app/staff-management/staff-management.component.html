@@ -1,0 +1,80 @@
+<div class="container">
+    <div class = "loginForm">
+      <mat-card class="example-card" appearance="outlined">
+    <div class = "header">
+    <h1>Staff Form</h1>
+    </div>
+ <form [formGroup]="stafform" (ngSubmit)="onSubmit()">
+    <div *ngIf="ageError" class="error-message">{{ageError}}</div>
+    <div class="form-group">
+    <label for="exampleInputname">Name</label>
+    <input type="text" formControlName="name"  class="form-control" name="name" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter name">
+
+      <div *ngIf="stafform.get('name')?.invalid && stafform.get('name')?.touched">
+        <small  class="error-message" *ngIf="stafform.get('name')?.hasError('required')">Name is required</small>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" formControlName="email"  class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+      <div *ngIf="stafform.get('email')?.invalid && stafform.get('email')?.touched">
+        <small class="error-message" *ngIf="stafform.get('email')?.hasError('required')">Email is required</small>
+        <small class="error-message" *ngIf="stafform.get('email')?.hasError('email')">please Enter valid Email</small>
+      </div>
+  </div>
+
+      <div class="form-group">
+    <label for="exampleInputaddress">Address</label>
+    <input type="text" formControlName="address"  class="form-control" name="name" id="exampleInputaddress" aria-describedby="emailHelp" placeholder="Enter address">
+
+      <div *ngIf="stafform.get('address')?.invalid && stafform.get('address')?.touched">
+        <small class="error-message" *ngIf="stafform.get('address')?.hasError('required')">Address is required</small>
+      </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleInputdate">Date of Birth</label>
+    <input type="date" class="form-control" formControlName="date" id="exampleInputdate" max="2024-09-27" placeholder="Password">
+
+     <div *ngIf="stafform.get('date')?.invalid && stafform.get('date')?.touched">
+        <small class="error-message" *ngIf="stafform.get('date')?.hasError('required')">Date is required</small>
+      </div>
+
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</mat-card>
+</div>
+
+
+<div class="list">
+<h3>Staff List</h3>
+<table class="table" >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let staff of staffList,let i=index">
+                <td>{{staff.name}}</td>
+                <td>{{staff.email}}</td>
+                <td>{{staff.address}}</td>
+                <td>{{staff.age}}</td>
+                <td class ="buttons">
+                    <button class="bt1" (click)="onEdit(i)">Edit</button>
+                    <button class="bt2" (click)="onDelete(i)">Delete</button>
+                </td>  
+            </tr>
+        </tbody>
+   
+</table>
+</div>
+</div>

@@ -1,0 +1,73 @@
+.example-card{
+    position: relative;
+    border :1px solid #ccc;
+    border-radius: 4px;
+    width:30%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;   
+}
+#exampleInputEmail1,#exampleInputPassword1{
+    margin: 4% 0% 0% 10%;
+    width:70%;
+}
+.header h1{
+    font-size: 170%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5%;
+}
+label{
+    margin:4% 0% 0% 10%;
+    font-weight: bold;
+}
+.error-message {
+    color: red;
+    display:flex;
+    flex-direction: row;
+    font-size: 90%;
+    margin: 4% 0% 0% 10%;
+    font-weight: bold;
+}
+button{
+    margin: 10%;
+    align-items: center;
+    text-align: center;
+}
+
+@media only screen and (max-width:600px){
+    .example-card {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 70%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+}
+
+
+@media only screen and (max-width:992px) {
+    .example-card {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+}
+
+@media only screen and (max-width:1200px) {
+    .example-card {
+        position: relative;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 90%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+}
